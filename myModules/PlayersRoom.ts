@@ -6,27 +6,21 @@ export class PlayersRoom extends Room<Engine> {
   maxClients = 2;
 
   onInit (options) {
-    this.setState({
-      entities: {
-        "f98h3f": { x: 0, y: 0, hp: 10 },
-        "24jgd3": { x: 100, y: 0, hp: 6 }
-      }
-  });
-    this.setSimulationInterval((time) => this.update(time), 1000);
+    this.setState(new Engine());
+    this.setSimulationInterval((time) => this.update(time), 1000); //simulation interval(16.66666666666667ms = 60fps)
   }
 
   update (time) {
     console.log(time); // check delay and fix update IN THE FUTURE !!!!!!!!!!!!!!!!!!!!!!!!!
-    for (let entityId in this.state.entities) {
-        // simple and naive gravity
-        this.state.entities[entityId].y += 1;
+    for (let sessionId in this.state.players) { // loop throw array of players
+        this.state.move(sessionId, {x: 0, y: 1}); //move player
     }
   }
-  
 
 
   onJoin (client, options, auth) {
     console.log(`client - ${client.sessionId} - joined - ${this.roomId}`);
+    this.state.addPlayer(client);
   }
 
   requestJoin (options, isNewRoom: boolean) {
@@ -42,6 +36,7 @@ export class PlayersRoom extends Room<Engine> {
 
   onLeave (client) {
     console.log(`client - ${client.sessionId} - left - ${this.roomId}`);
+    this.state.removePlayer(client.sessionId);
   }
 
 }
