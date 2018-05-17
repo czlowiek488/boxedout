@@ -17,6 +17,7 @@ button {
     top: 60px;
     flex: 0 1 auto;
     align-self: auto;
+    color: black;
 }
 
 #clientMenu{
@@ -39,3 +40,7 @@ button {
     -ms-flex-align: start;
     align-items: flex-start;
     }
+
+div {
+    color: white;
+}

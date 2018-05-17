@@ -1,5 +1,23 @@
 <body>
+    <script>
+        var conn = new Connection();
+        var playerFound = false;
+        
+        function joinRoom() {
+            conn.joinRoom();
+        }
+
+        function leaveRoom() {
+            delete engine;
+            conn.leaveRoom();
+            document.getElementById('roomStatus').innerHTML = 'you left room';
+        }
+    </script>
     <div id='clientMenu'>
-        <button onClick='joinRoom()'>    New Game   </button>
+        <div id='serverStatus'>
+            <p>Room Status: <a id='roomStatus'> you are not in room </a></p>
+        </div>
+        <button onClick='joinRoom()'>    Join Room   </button>
+        <button onClick='leaveRoom()'>    Leave Room   </button>
     </div>
 </body>
