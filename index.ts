@@ -15,9 +15,8 @@ import { PlayersRoom } from './myModules/PlayersRoom';
 
 
     //setup
-    const port = Number(process.env.PORT || 2657); //set port
+    const port = Number(process.env.PORT || 8080); //set port
     const app = express(); //set express as server
-
 
     app.use('/', siteRoutes); //add siteRoutes to routes
     app.use('/game', gameRoutes); //add gameRoutes to routes

@@ -8,9 +8,8 @@
         }
 
         function leaveRoom() {
-            delete engine;
             conn.leaveRoom();
-            document.getElementById('roomStatus').innerHTML = 'you left room';
+            document.getElementById('roomStatus').innerHTML = 'you left room - join to other';
         }
     </script>
     <div id='clientMenu'>

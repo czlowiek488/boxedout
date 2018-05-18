@@ -41,6 +41,16 @@ button {
     align-items: flex-start;
     }
 
-div {
+div#serverStatus p {
+    word-wrap: break-word;
+    padding: 0px;
+    background-color: rgb(26, 25, 25);
+}
+div#serverStatus p a {
+    background-color: rgb(72, 66, 66);
+}
+div#serverStatus {
+    width: 100px;
     color: white;
+    text-align: center;
 }

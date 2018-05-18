@@ -22,7 +22,7 @@
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "morgan": "^1.9.0",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.17.4",
     "serve-index": "^1.8.0",
     "superagent": "^3.8.1"
   },

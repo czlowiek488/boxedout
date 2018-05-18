@@ -10,13 +10,17 @@ export class Player {
     @nosync private speed;
     @nosync public sessionId;
     @nosync public controls;
+    @nosync public moveVector;
+    @nosync private moveCheck;
     
     constructor(
         pos: Vector,
         sessionId: string,
         size: Vector,
+        moveCheck: Function,
     ) {
-        this.pos = pos;
+        this.pos = pos.mult(size);
+        this.moveVector = new Vector(0,0);
         this.sessionId = sessionId;
         this.speed = 1;
         this.size = size;
@@ -25,10 +29,16 @@ export class Player {
                 left: 65, //a
                 down:83, //s
                 right: 68, //d  
-            } 
+            };
+        this.moveCheck = moveCheck; 
     }
 
-    move(pos) {
-        this.pos = this.pos.add(pos, this.speed);
+    update() {
+        this.move();
+    }
+
+    move() {
+        let pos = this.pos.add(this.moveVector.mult(new Vector(this.speed, this.speed)));
+        if( this.moveCheck(pos, this.size) ) this.pos = pos;
     }
 }
